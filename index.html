@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+  <body>
+    <!-- Message Box -->
+    <div
+      id="messageBox"
+      class="fixed top-20 left-1/2 -translate-x-1/2 p-4 rounded-lg shadow-lg z-50 transition-all duration-500 ease-in-out hidden"
+    >
+      <span id="messageContent"></span>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbarNav">
+      <div class="navbar-brand">
+        <h3>Portfolio</h3>
+      </div>
+      <button class="menu-toggle" id="menuToggle">&#9776;</button>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#about" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="#skills" class="nav-link">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a href="#portfolio" class="nav-link">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a href="#contact" class="nav-link">Contact</a>
+        </li>
+      </ul>
+      <div class="nav-buttons">
+        <div id="authButtons">
+          <button class="btn" id="loginBtn">Login</button>
+          <button class="btn" id="signupBtn">Sign Up</button>
+        </div>
+
+        <div
+          id="userInfo"
+          style="display: none; align-items: center; gap: 15px"
+        >
+          <span
+            id="usernameDisplay"
+            style="color: white; font-weight: bold"
+          ></span>
+          <button class="btn" id="logoutBtn">Logout</button>
+        </div>
+
+        <button class="btn-theme" id="themeSwitch">
+          <i class="fas fa-adjust"></i> Switch Theme
+        </button>
+      </div>
+    </nav>
+
+    <!-- Login Popup -->
+    <div id="loginPopup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn" id="closeLogin">&times;</span>
+        <h2>Login to Your Account</h2>
+        <form id="loginForm" action="/login" method="POST">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+        <p>
+          Don't have an account?
+          <a href="#" id="switchToSignup">Sign Up</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Signup Popup -->
+    <div id="signupPopup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn" id="closeSignup">&times;</span>
+        <h2>Sign Up to Create Account</h2>
+        <form id="signupForm" action="/signup" method="POST">
+          <div class="form-group">
+            <label for="newUsername">Username</label>
+            <input type="text" id="newUsername" name="username" required />
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="signup-phone">Phone Number</label>
+            <input type="tel" id="signup-phone" name="phone" required />
+          </div>
+          <div class="form-group">
+            <label for="newPassword">Password</label>
+            <input type="password" id="newPassword" name="password" required />
+          </div>
+          <button type="submit" class="btn-primary">Sign Up</button>
+        </form>
+        <p>
+          Already have an account?
+          <a href="#" id="switchToLogin">Login</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Welcome to My <span>Portfolio</span></h1>
+          <p>I'm Saif Mehsud, a passionate web developer.</p>
+          <a href="#portfolio" class="btn-primary">View Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <h2 class="text-center">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <h3 class="about-h3">Saif Ullah</h3>
+            <p class="about-para">
+              I am a passionate web developer with a keen eye for detail and a
+              love for creating beautiful and functional websites. With 5 years
+              of experience in front-end development, I specialize in HTML, CSS,
+              and JavaScript.
+            </p>
+            <p class="about-para">
+              Throughout my career, I have worked on various projects,
+              collaborating with designers and back-end developers to deliver
+              high-quality websites. I am dedicated to staying up-to-date with
+              the latest web technologies and trends, constantly expanding my
+              skill set to provide the best solutions for my clients.
+            </p>
+            <p class="about-para">
+              My goal is to create user-friendly and visually appealing websites
+              that not only meet my clients' requirements but also provide a
+              seamless browsing experience for their users. I thrive on
+              challenges and enjoy finding creative solutions to complex
+              problems.
+            </p>
+          </div>
+          <div class="about-image">
+            <img
+              src="public/images/saifi.jpeg"
+              alt="Saif Ullah Profile"
+              class="profile-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+      <h2 class="text-center">Skills</h2>
+      <div class="pricing-table">
+        <div class="pricing-card">
+          <h3>HTML5</h3>
+          <p>Build the structure of web pages</p>
+          <p class="price">$50/hour</p>
+          <a href="#" class="btn-primary">Learn More</a>
+        </div>
+        <div class="pricing-card">
+          <h3>CSS3</h3>
+          <p>Add style and design to web pages</p>
+          <p class="price">$50/hour</p>
+          <a href="#" class="btn-primary">Learn More</a>
+        </div>
+        <div class="pricing-card">
+          <h3>JavaScript</h3>
+          <p>Create interactive and dynamic web experiences</p>
+          <p class="price">$75/hour</p>
+          <a href="#" class="btn-primary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
+      <h2 class="text-center">My Projects</h2>
+      <div class="project">
+        <div class="project-item">
+          <img src="public/images/laptop1.jpeg" alt="Project 1" />
+          <h3>Project 1</h3>
+          <p>A dynamic web application built with HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="project-item">
+          <img src="public/images/laptop2.jpeg" alt="Project 2" />
+          <h3>Project 2</h3>
+          <p>A responsive portfolio website showcasing client work.</p>
+        </div>
+        <div class="project-item">
+          <img src="public/images/laptop3.jpg" alt="Project 3" />
+          <h3>Project 3</h3>
+          <p>An e-commerce platform with modern design.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Dashboard Section -->
+    <section
+      id="admin-dashboard"
+      class="admin-dashboard-container"
+      style="display: none"
+    >
+      <div class="admin-content-wrapper">
+        <div class="admin-search-container">
+          <input
+            type="text"
+            id="admin-search-input"
+            placeholder="Start typing a username..."
+            class="admin-search-input"
+            autocomplete="off"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="admin-search-icon"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 4.906l3.857 3.856a.75.75 0 1 1-1.06 1.06l-3.856-3.857A8.25 8.25 0 0 1 2.25 10.5Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+
+        <div id="autocomplete-results" class="admin-autocomplete-results"></div>
+
+        <div id="admin-message" class="admin-message"></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="contact-form">
+        <h2 class="text-center">Contact Me</h2>
+        <form action="/submit" method="POST">
+          <input
+            type="text"
+            id="contact-name"
+            name="name"
+            placeholder="Full Name"
+            required
+          />
+          <input
+            type="email"
+            id="contact-email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <input
+            type="tel"
+            id="contact-phone"
+            name="phone"
+            placeholder="Phone"
+            required
+          />
+          <textarea
+            id="contact-message"
+            name="message"
+            placeholder="Message"
+            required
+          ></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="social-media-icons">
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+      </div>
+      <p class="end-para">&copy; 2025 Saif Mehsud. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

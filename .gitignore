@@ -1,0 +1,5 @@
+# .gitignore
+# Ignore the environment file that contains sensitive data
+.env
+# Ignore the node modules directory
+node_modules

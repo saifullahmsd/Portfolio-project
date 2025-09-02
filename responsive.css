@@ -1,0 +1,82 @@
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-text,
+  .hero-image {
+    flex-basis: 100%;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
+  .about-content {
+    flex-direction: column;
+  }
+  .about-text,
+  .about-image {
+    flex-basis: 100%;
+  }
+  .pricing-card {
+    max-width: 100%;
+  }
+  .project-item {
+    max-width: 100%;
+  }
+  .navbar-nav,
+  .nav-buttons {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  #navbarNav.active {
+    position: relative;
+  }
+  #navbarNav.active .navbar-nav,
+  #navbarNav.active .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    background-color: #67c6ec;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    gap: 0.5rem;
+    border-top: 1px solid #333;
+  }
+
+  #navbarNav.active .navbar-nav {
+    padding-top: 8rem;
+    align-items: center;
+    order: 1;
+  }
+  #navbarNav.active .nav-buttons {
+    align-items: center;
+    order: 2;
+  }
+  .navbar-nav li {
+    margin: 0.5rem 0;
+  }
+  .nav-buttons #authButtons {
+    flex-direction: column;
+  }
+  .popup {
+    width: 100%;
+    max-width: 100%;
+    right: -100%; /* Full width off-screen on mobile */
+  }
+  .popup.active {
+    right: 0;
+  }
+  .contact-form {
+    width: 100%;
+    padding: 50px;
+    box-sizing: border-box;
+  }
+}

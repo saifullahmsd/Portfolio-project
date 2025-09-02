@@ -1,0 +1,294 @@
+// this example only for form submission
+
+// const http = require("http");
+// const fs = require("fs");
+// const path = require("path");
+// const querystring = require("querystring");
+
+// const server = http.createServer((req, res) => {
+//   // Serve static files
+//   if (req.method === "GET") {
+//     let filePath = path.join(
+//       __dirname,
+//       req.url === "/" ? "index.html" : req.url
+//     );
+//     const extname = path.extname(filePath).toLowerCase();
+//     const mimeTypes = {
+//       ".html": "text/html",
+//       ".css": "text/css",
+//       ".js": "application/javascript",
+//       ".jpg": "image/jpeg",
+//       ".jpeg": "image/jpeg",
+//       ".mp4": "video/mp4",
+//     };
+//     const contentType = mimeTypes[extname] || "application/octet-stream";
+
+//     fs.readFile(filePath, (err, content) => {
+//       if (err) {
+//         res.writeHead(404, { "Content-Type": "text/plain" });
+//         res.end("File not found");
+//         return;
+//       }
+//       res.writeHead(200, { "Content-Type": contentType });
+//       res.end(content);
+//     });
+//   }
+
+//   // Handle form submission
+//   if (req.method === "POST" && req.url === "/submit") {
+//     let body = "";
+//     req.on("data", (chunk) => {
+//       body += chunk.toString();
+//     });
+//     req.on("end", () => {
+//       const formData = querystring.parse(body);
+//       // code for plain text format
+//       // const dataToSave = `Email: ${formData.email}, Phone: ${formData.phone}, Message: ${formData.message}, Timestamp: ${new Date().toISOString()}\n`;
+//       const dataToSave = {
+//         email: formData.email,
+//         phone: formData.phone,
+//         message: formData.message,
+//         timestamp: new Date().toISOString(),
+//       };
+//       fs.appendFile(
+//         "formData.txt",
+//         JSON.stringify(dataToSave) + "\n",
+//         (err) => {
+//           if (err) {
+//             res.writeHead(500, { "Content-Type": "text/plain" });
+//             res.end("Error saving data");
+//             return;
+//           }
+//           // This displays a confirmation page after submission.
+//           res.writeHead(200, { "Content-Type": "text/html" });
+//           res.end(
+//             '<h1>Form submitted successfully!</h1><a href="/#contact">Go back</a>'
+//           );
+//         }
+//       );
+//     });
+//   }
+// });
+
+// const PORT = 3000;
+// server.listen(PORT, () => {
+//   console.log(`Server running at http://localhost:${PORT}/`);
+// });
+
+// 2nd example for form with login
+
+// const http = require("http");
+// const fs = require("fs");
+// const path = require("path");
+// const querystring = require("querystring");
+
+// const server = http.createServer((req, res) => {
+//   // Serve static files (index.html, authentication/login.html, styles.css, etc.)
+//   if (req.method === "GET") {
+//     let filePath = "." + req.url;
+//     if (req.url === "/") filePath = "./index.html";
+//     if (req.url === "/authentication/login")
+//       filePath = "./authentication/login.html";
+
+//     const extname = String(path.extname(filePath)).toLowerCase();
+//     const mimeTypes = {
+//       ".html": "text/html",
+//       ".css": "text/css",
+//       ".jpg": "image/jpeg",
+//       ".jpeg": "image/jpeg",
+//       ".mp4": "video/mp4",
+//       ".js": "application/javascript",
+//     };
+//     const contentType = mimeTypes[extname] || "application/octet-stream";
+
+//     fs.readFile(filePath, (err, content) => {
+//       if (err) {
+//         res.writeHead(404, { "Content-Type": "text/plain" });
+//         res.end("File not found");
+//         return;
+//       }
+//       res.writeHead(200, { "Content-Type": contentType });
+//       res.end(content);
+//     });
+//   }
+
+//   // Handle login form submission
+//   if (req.method === "POST" && req.url === "/login") {
+//     let body = "";
+//     req.on("data", (chunk) => {
+//       body += chunk.toString();
+//     });
+//     req.on("end", () => {
+//       const formData = querystring.parse(body);
+//       const username = formData.username;
+//       const password = formData.password;
+
+//       // Check if username and password match a user in users.txt
+//       fs.readFile("users.txt", "utf8", (err, data) => {
+//         if (err) {
+//           res.writeHead(500, { "Content-Type": "text/plain" });
+//           res.end("Error checking login");
+//           return;
+//         }
+//         const users = data.split("\n").filter((line) => line);
+//         const isValid = users.some(
+//           (user) => user === `${username}:${password}`
+//         );
+
+//         if (isValid) {
+//           res.writeHead(200, { "Content-Type": "text/plain" });
+//           res.end("Login successful! Welcome!");
+//         } else {
+//           res.writeHead(401, { "Content-Type": "text/plain" });
+//           res.end("Wrong username or password");
+//         }
+//       });
+//     });
+//   }
+
+//   // Handle original form submission
+//   if (req.method === "POST" && req.url === "/submit") {
+//     let body = "";
+//     req.on("data", (chunk) => {
+//       body += chunk.toString();
+//     });
+//     req.on("end", () => {
+//       const formData = querystring.parse(body);
+//       const dataToSave = {
+//         email: formData.email,
+//         phone: formData.phone,
+//         message: formData.message,
+//         timestamp: new Date().toISOString(),
+//       };
+//       fs.appendFile(
+//         "formData.txt",
+//         JSON.stringify(dataToSave) + "\n",
+//         (err) => {
+//           if (err) {
+//             res.writeHead(500, { "Content-Type": "text/plain" });
+//             res.end("Error saving data");
+//             return;
+//           }
+//           res.writeHead(200, { "Content-Type": "text/html" });
+//           res.end(
+//             '<h1>Form Submitted Successfully!</h1><p>Your message has been saved.</p><a href="/#contact">Go back</a>'
+//           );
+//         }
+//       );
+//     });
+//   }
+// });
+
+// const PORT = 3000;
+// server.listen(PORT, () => {
+//   console.log(`Server running at http://localhost:${PORT}/`);
+// });
+
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
+const querystring = require("querystring");
+const sql = require("mssql");
+
+const server = http.createServer(async (req, res) => {
+  // Initialize SQL Server connection
+  const dbConfig = {
+    server: "localhost", // Update to 'localhost\\SQL2019' for named instance
+    database: "portfolio_db",
+    authentication: {
+      type: "default", // Windows Authentication
+      options: {
+        userName: "",
+        password: "",
+      },
+    },
+    options: {
+      encrypt: true,
+      trustServerCertificate: true,
+    },
+  };
+  let db;
+  try {
+    db = await sql.connect(dbConfig);
+  } catch (err) {
+    console.error("Error connecting to SQL Server:", err);
+    res.writeHead(500, { "Content-Type": "text/plain" });
+    res.end("Server error");
+    return;
+  }
+
+  // Serve static files
+  if (req.method === "GET") {
+    let filePath = path.join(
+      __dirname,
+      req.url === "/" ? "index.html" : req.url
+    );
+    const extname = path.extname(filePath).toLowerCase();
+    const mimeTypes = {
+      ".html": "text/html",
+      ".css": "text/css",
+      ".js": "application/javascript",
+      ".jpg": "image/jpeg",
+      ".jpeg": "image/jpeg",
+      ".mp4": "video/mp4",
+    };
+    const contentType = mimeTypes[extname] || "application/octet-stream";
+
+    fs.readFile(filePath, (err, content) => {
+      if (err) {
+        console.log(`Error reading file: ${filePath}`, err);
+        res.writeHead(404, { "Content-Type": "text/plain" });
+        res.end("File not found");
+        sql.close();
+        return;
+      }
+      res.writeHead(200, { "Content-Type": contentType });
+      res.end(content);
+      sql.close();
+    });
+  }
+
+  // Handle form submission
+  if (req.method === "POST" && req.url === "/submit") {
+    let body = "";
+    req.on("data", (chunk) => {
+      body += chunk.toString();
+    });
+    req.on("end", async () => {
+      const formData = querystring.parse(body);
+      const dataToSave = {
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        timestamp: new Date().toISOString(),
+      };
+      try {
+        await db
+          .request()
+          .input("email", sql.NVarChar, dataToSave.email)
+          .input("phone", sql.NVarChar, dataToSave.phone)
+          .input("message", sql.NVarChar, dataToSave.message)
+          .input("timestamp", sql.DateTime, new Date(dataToSave.timestamp))
+          .query(
+            "INSERT INTO contacts (email, phone, message, timestamp) VALUES (@email, @phone, @message, @timestamp)"
+          );
+        console.log("Data saved to SQL Server:", dataToSave);
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(
+          '<h1>Form Submitted Successfully!</h1><p>Your message has been saved.</p><a href="/#contact">Go back</a>'
+        );
+      } catch (err) {
+        console.error("Error inserting data:", err);
+        res.writeHead(500, { "Content-Type": "text/plain" });
+        res.end("Error saving data");
+      } finally {
+        sql.close();
+      }
+    });
+  }
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}/`);
+});
